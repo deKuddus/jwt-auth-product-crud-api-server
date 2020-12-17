@@ -80,7 +80,7 @@ class ProductController extends Controller
         if(is_null($product)){
             return response()->json(['message' => 'Failed to create product'],404);
         }
-        return response()->json(['product' => $product],200);
+        return response()->json($product,200);
     }
 
     /**
@@ -92,7 +92,7 @@ class ProductController extends Controller
      */
     public function update(ProductUpdateRequest $request)
     {
-        $product = Product::find($request->product_id);
+        $product = Product::find($request->id);
         $product->title = $request->title;
         $product->description = $request->description;
         $product->price = $request->price;
@@ -106,9 +106,9 @@ class ProductController extends Controller
         }
 
         if($product->save()){
-            return response()->json(['message' => 'Product created'],200);
+            return response()->json(['message' => 'Product updated'],200);
         }
-        return response()->json(['message' => 'Failed to create product'],201);
+        return response()->json(['message' => 'Failed to update product'],201);
     }
 
     /**
