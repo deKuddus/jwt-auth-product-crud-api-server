@@ -13,7 +13,7 @@ cp .env.example .env
 ````
 
 ```
-php artisan key:genrate
+php artisan key:generate
 
 ```
 
